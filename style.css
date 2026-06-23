@@ -36,9 +36,10 @@ body {
   text-align: center;
 }
 
-h1 {
-  margin-bottom: 10px;
-  letter-spacing: 1px;
+h1{
+    color:white;
+    margin-bottom:20px;
+    text-shadow:0 0 10px rgba(0,0,0,0.5);
 }
 
 #leader {
@@ -128,33 +129,31 @@ button:hover {
 }
 body{
     min-height:100vh;
-    background:
-    linear-gradient(to bottom,#00c6ff,#0072ff 50%,#fddb92 100%);
+    background-image:url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
     display:flex;
     justify-content:center;
     align-items:center;
     padding:20px;
 }
 
-.container{
-    background:
-        linear-gradient(rgba(255,255,255,0.15), rgba(255,255,255,0.15)),
-        url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
-    background-size:cover;
-    background-position:center;
-    color:white;
+3);.container{
+    background:rgba(0,0,0,0.35);
+    backdrop-filter:blur(12px);
     border-radius:25px;
     padding:30px;
     max-width:700px;
     width:100%;
     text-align:center;
-    box-shadow:0 8px 25px rgba(0,0,0,0.3);
+    color:white;
+    box-shadow:0 10px 40px rgba(0,0,0,0.4);
 }
-
 .player{
     flex:1;
-    background:rgba(255,255,255,0.75);
-    backdrop-filter:blur(8px);
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
     padding:20px;
     border-radius:20px;
 }
