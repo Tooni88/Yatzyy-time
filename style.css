@@ -64,7 +64,7 @@ button {
   color: white;
 }
 
-@keyframes pop {
+pop {
   0% { transform: scale(1); }
   50% { transform: scale(1.15); }
   100% { transform: scale(1); }
@@ -83,7 +83,7 @@ button {
   animation: fall 2s linear forwards;
 }
 
-@keyframes fall {
+fall {
   to {
     transform: translateY(100vh);
     opacity: 0;
