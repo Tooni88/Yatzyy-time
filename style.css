@@ -1,89 +1,122 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  font-family: "Arial", sans-serif;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+
+  background: linear-gradient(135deg, #00c6ff, #0072ff, #00ffcc);
+  background-size: 300% 300%;
+  animation: backgroundMove 10s ease infinite;
+
   color: white;
+}
+
+@keyframes backgroundMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .app {
   width: 360px;
-  background: rgba(255,255,255,0.12);
   padding: 20px;
-  border-radius: 20px;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  border-radius: 25px;
+
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(15px);
+
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+
   text-align: center;
 }
 
 h1 {
   margin-bottom: 10px;
+  letter-spacing: 1px;
 }
 
 .leader {
   font-size: 18px;
   font-weight: bold;
-  color: #ffe600;
+  color: #ffe66d;
   margin-bottom: 15px;
 }
 
 .cards {
   display: flex;
   justify-content: space-between;
+  gap: 10px;
 }
 
 .card {
-  width: 45%;
-  background: rgba(255,255,255,0.1);
-  border-radius: 15px;
-  padding: 10px;
+  flex: 1;
+  padding: 12px;
+  border-radius: 18px;
+
+  background: rgba(255,255,255,0.10);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+h2 {
+  margin: 5px 0;
 }
 
 .score {
-  font-size: 40px;
+  font-size: 42px;
   margin: 10px 0;
+  font-weight: bold;
 }
 
 button {
   width: 100%;
   padding: 8px;
   border: none;
-  border-radius: 10px;
-  background: #ffcc00;
+  border-radius: 12px;
+
+  background: linear-gradient(90deg, #ffd166, #ffb703);
   font-weight: bold;
   cursor: pointer;
-  margin-top: 8px;
+
+  transition: 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
 }
 
 .reset {
   margin-top: 15px;
-  background: rgba(255,0,0,0.6);
+  background: linear-gradient(90deg, #ff4d6d, #ff006e);
   color: white;
 }
 
-pop {
+/* score pop animation */
+.pop {
+  animation: pop 0.25s ease;
+}
+
+@keyframes pop {
   0% { transform: scale(1); }
-  50% { transform: scale(1.15); }
+  50% { transform: scale(1.2); }
   100% { transform: scale(1); }
 }
 
-.pop {
-  animation: pop 0.3s ease;
-}
-
+/* confetti */
 .confetti {
   position: fixed;
   width: 6px;
   height: 6px;
   top: -10px;
-  background: yellow;
-  animation: fall 2s linear forwards;
+  animation: fall linear forwards;
 }
 
-fall {
+@keyframes fall {
   to {
     transform: translateY(100vh);
     opacity: 0;
