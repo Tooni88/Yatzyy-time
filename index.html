@@ -1,44 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Toni vs Elias</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toni vs Elias Scoreboard</title>
 
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background: #f4f4f4;
+        padding: 30px;
+    }
+
+    .container {
+        max-width: 700px;
+        margin: auto;
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+        margin-bottom: 30px;
+    }
+
+    .players {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 30px;
+    }
+
+    .player {
+        width: 45%;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 8px;
+        margin-top: 10px;
+    }
+
+    .win-btn {
+        background: #28a745;
+        color: white;
+    }
+
+    .reset-btn {
+        background: #dc3545;
+        color: white;
+        margin-top: 20px;
+    }
+
+    .stats {
+        margin-top: 25px;
+        text-align: left;
+    }
+
+    .stats p {
+        font-size: 18px;
+    }
+</style>
+</head>
 <body>
 
-<div class="app">
+<div class="container">
+    <h1>Toni vs Elias</h1>
 
-<h1>🌴🍻 Toni vs Elias 🍻🌴</h1>
+    <div class="players">
+        <div class="player">
+            <h2>Toni</h2>
+            <h3 id="toniScore">0</h3>
+            <button class="win-btn" onclick="addWin('toni')">
+                Toni Wins
+            </button>
+        </div>
 
-  <div class="leader" id="leader">Loading...</div>
-
-  <div class="cards">
-
-    <div class="card toni">
-      <h2>Toni</h2>
-      <div class="score" id="toniScore">0</div>
-      <div class="streak">🔥 Streak: <span id="toniStreak">0</span></div>
-      <div class="best">🏆 Best: <span id="toniBest">0</span></div>
-      <button onclick="addPoint('toni')">+ Point</button>
+        <div class="player">
+            <h2>Elias</h2>
+            <h3 id="eliasScore">0</h3>
+            <button class="win-btn" onclick="addWin('elias')">
+                Elias Wins
+            </button>
+        </div>
     </div>
 
-    <div class="card elias">
-      <h2>Elias</h2>
-      <div class="score" id="eliasScore">0</div>
-      <div class="streak">🔥 Streak: <span id="eliasStreak">0</span></div>
-      <div class="best">🏆 Best: <span id="eliasBest">0</span></div>
-      <button onclick="addPoint('elias')">+ Point</button>
+    <div class="stats">
+        <h2>Statistics</h2>
+
+        <p><strong>Total Wins</strong></p>
+        <p>Toni: <span id="toniTotal">0</span></p>
+        <p>Elias: <span id="eliasTotal">0</span></p>
+
+        <hr>
+
+        <p><strong>Best Win Streak</strong></p>
+        <p>Toni: <span id="toniBestStreak">0</span></p>
+        <p>Elias: <span id="eliasBestStreak">0</span></p>
     </div>
 
-  </div>
-
-  <button class="reset" onclick="reset()">Reset Game</button>
-
+    <button class="reset-btn" onclick="resetCurrentScore()">
+        Reset Current Score
+    </button>
 </div>
 
-<script src="app.js"></script>
+<script>
+let data = JSON.parse(localStorage.getItem("scoreData")) || {
+    current: {
+        toni: 0,
+        elias: 0
+    },
+    totalWins: {
+        toni: 0,
+        elias: 0
+    },
+    currentStreak: {
+        toni: 0,
+        elias: 0
+    },
+    bestStreak: {
+        toni: 0,
+        elias: 0
+    },
+    lastWinner: null
+};
+
+function saveData() {
+    localStorage.setItem("scoreData", JSON.stringify(data));
+}
+
+function addWin(player) {
+    data.current[player]++;
+    data.totalWins[player]++;
+
+    if (data.lastWinner === player) {
+        data.currentStreak[player]++;
+    } else {
+        const other = player === "toni" ? "elias" : "toni";
+
+        data.currentStreak[player] = 1;
+        data.currentStreak[other] = 0;
+        data.lastWinner = player;
+    }
+
+    if (data.currentStreak[player] > data.bestStreak[player]) {
+        data.bestStreak[player] = data.currentStreak[player];
+    }
+
+    saveData();
+    updateDisplay();
+}
+
+function resetCurrentScore() {
+    data.current.toni = 0;
+    data.current.elias = 0;
+
+    saveData();
+    updateDisplay();
+}
+
+function updateDisplay() {
+    document.getElementById("toniScore").textContent =
+        data.current.toni;
+
+    document.getElementById("eliasScore").textContent =
+        data.current.elias;
+
+    document.getElementById("toniTotal").textContent =
+        data.totalWins.toni;
+
+    document.getElementById("eliasTotal").textContent =
+        data.totalWins.elias;
+
+    document.getElementById("toniBestStreak").textContent =
+        data.bestStreak.toni;
+
+    document.getElementById("eliasBestStreak").textContent =
+        data.bestStreak.elias;
+}
+
+updateDisplay();
+</script>
+
 </body>
 </html>
