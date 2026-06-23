@@ -3,7 +3,7 @@ let data = {
   elias: { score: 0, streak: 0, best: 0 }
 };
 
-const tapSound = new Audio("tap.mp3");
+const tapSound = new Audio("tap.mp3"); mixkit-on-or-off-light-switch-tap-2585.wav
 const winSound = new Audio("win.mp3");
 
 function load() {
