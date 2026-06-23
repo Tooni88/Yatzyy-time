@@ -41,11 +41,11 @@ h1 {
   letter-spacing: 1px;
 }
 
-.leader {
-  font-size: 18px;
+#leader {
+  font-size: 20px;
   font-weight: bold;
   color: #ffe66d;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .cards {
