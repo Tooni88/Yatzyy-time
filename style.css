@@ -126,3 +126,35 @@ button:hover {
     opacity: 0;
   }
 }
+body{
+    min-height:100vh;
+    background:
+    linear-gradient(to bottom,#00c6ff,#0072ff 50%,#fddb92 100%);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.container{
+    background:
+        linear-gradient(rgba(255,255,255,0.15), rgba(255,255,255,0.15)),
+        url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
+    background-size:cover;
+    background-position:center;
+    color:white;
+    border-radius:25px;
+    padding:30px;
+    max-width:700px;
+    width:100%;
+    text-align:center;
+    box-shadow:0 8px 25px rgba(0,0,0,0.3);
+}
+
+.player{
+    flex:1;
+    background:rgba(255,255,255,0.75);
+    backdrop-filter:blur(8px);
+    padding:20px;
+    border-radius:20px;
+}
