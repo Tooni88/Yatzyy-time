@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Toni vs Elias</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+  <h1>☀️ Toni vs Elias</h1>
+
+  <div class="leader" id="leader">Loading...</div>
+
+  <div class="cards">
+
+    <div class="card toni">
+      <h2>Toni</h2>
+      <div class="score" id="toniScore">0</div>
+      <div class="streak">🔥 Streak: <span id="toniStreak">0</span></div>
+      <div class="best">🏆 Best: <span id="toniBest">0</span></div>
+      <button onclick="addPoint('toni')">+ Point</button>
+    </div>
+
+    <div class="card elias">
+      <h2>Elias</h2>
+      <div class="score" id="eliasScore">0</div>
+      <div class="streak">🔥 Streak: <span id="eliasStreak">0</span></div>
+      <div class="best">🏆 Best: <span id="eliasBest">0</span></div>
+      <button onclick="addPoint('elias')">+ Point</button>
+    </div>
+
+  </div>
+
+  <button class="reset" onclick="reset()">Reset Game</button>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
