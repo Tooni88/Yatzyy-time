@@ -88,10 +88,12 @@ function updateUI() {
 
 // Reset game
 function reset() {
-  data.toni.score = 0;
-  data.elias.score = 0;
-  data.toni.streak = 0;
-  data.elias.streak = 0;
+  data = {
+    toni: { score: 0, streak: 0, best: 0 },
+    elias: { score: 0, streak: 0, best: 0 }
+  };
+
+  lastLeader = null;
 
   save();
   updateUI();
